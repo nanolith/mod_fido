@@ -11,12 +11,15 @@
 #include <sys/kernel.h>
 #include <sys/module.h>
 
+#include "auth_cache.h"
+
 static int
 mod_fido_handler(module_t mod, int type, void *arg)
 {
     int error = 0;
 
-    switch (type) {
+    switch (type)
+    {
         case MOD_LOAD:
             break;
 
