@@ -43,3 +43,6 @@ RB_HEAD(auth_cache_table, auth_cache_entry);
  */
 int
 auth_cache_entry_cmp(auth_cache_entry *lhs, auth_cache_entry *rhs);
+
+/* Red-black tree for the auth cache entries. */
+RB_PROTOTYPE(auth_cache_table, auth_cache_entry, link, auth_cache_entry_cmp)
