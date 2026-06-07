@@ -26,6 +26,11 @@ struct auth_cache_entry
 };
 
 /**
+ * \brief Auth cache table.
+ */
+RB_HEAD(auth_cache_table, auth_cache_entry);
+
+/**
  * \brief Compare two auth_cache entries.
  *
  * \param lhs           The left-hand side of the comparison.
