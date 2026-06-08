@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include <mod_fido/function_contracts.h>
 #include <mod_fido/model_assert.h>
 #include <sys/tree.h>
 #include <sys/types.h>
