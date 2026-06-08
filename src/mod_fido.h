@@ -10,6 +10,7 @@
 #pragma once
 
 #include <sys/param.h>
+#include <sys/malloc.h>
 #include <sys/file.h>
 #include <sys/sysent.h>
 
@@ -18,6 +19,11 @@
 #include <mod_fido/model_assert.h>
 
 #include "auth_cache.h"
+
+/**
+ * \brief The arena for the fido module.
+ */
+MALLOC_DECLARE(M_FIDO);
 
 /**
  * \brief The fido kernel module instance.
