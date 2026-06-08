@@ -23,16 +23,28 @@
 int
 auth_cache_entry_cmp(auth_cache_entry *lhs, auth_cache_entry *rhs)
 {
+    int retval;
+
+    MODEL_CONTRACT_CHECK_PRECONDITIONS(auth_cache_entry_cmp, lhs, rhs);
+
     if (lhs->key < rhs->key)
     {
-        return -1;
+        retval = -1;
+        goto done;
     }
     else if (lhs->key > rhs->key)
     {
-        return 1;
+        retval = 1;
+        goto done;
     }
     else
     {
-        return 0;
+        retval = 0;
+        goto done;
     }
+
+done:
+    MODEL_CONTRACT_CHECK_POSTCONDITIONS(auth_cache_entry_cmp, retval, lhs, rhs);
+
+    return retval;
 }
