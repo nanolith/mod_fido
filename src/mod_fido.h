@@ -76,3 +76,10 @@ property_mod_fido_instance_hooked(
 int FN_DECL_MUST_CHECK
 mod_fido_instance_create(
     mod_fido_instance** inst);
+
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_create, mod_fido_instance** inst)
+        /* inst is readable and writable. */
+        MODEL_CHECK_OBJECT_RW(inst, sizeof(*inst));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_create)
