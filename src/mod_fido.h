@@ -155,7 +155,7 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
  *      - 0 on success.
  *      - non-zero on failure.
  */
-int FN_DECL_MUST_CHECK
+void
 mod_fido_instance_hook_ioctl(
     mod_fido_instance* inst);
 
@@ -165,5 +165,12 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(inst));
         /* inst is not yet hooked. */
-        MODEL_ASSERT(property_mod_fido_instance_hooked(inst));
+        MODEL_ASSERT(!property_mod_fido_instance_hooked(inst));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hook_ioctl)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_hook_ioctl, mod_fido_instance* inst)
+        /* inst is hooked. */
+        MODEL_ASSERT(property_mod_fido_instance_hooked(inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_ioctl)
