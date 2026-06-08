@@ -31,3 +31,18 @@ struct mod_fido_instance
     size_t hooked_count;
     struct auth_cache_table auth_cache;
 };
+
+/******************************************************************************/
+/* Start of model checking properties.                                        */
+/******************************************************************************/
+
+/**
+ * \brief Valid \ref mod_fido_instance.
+ *
+ * \param inst          The instance to check.
+ *
+ * \returns 1 if the instance is valid and 0 otherwise.
+ */
+int
+property_mod_fido_instance_valid(
+    const mod_fido_instance* inst);
