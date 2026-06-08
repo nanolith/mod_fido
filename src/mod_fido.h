@@ -83,3 +83,19 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* inst is readable and writable. */
         MODEL_CHECK_OBJECT_RW(inst, sizeof(*inst));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_create)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_create, int retval, mod_fido_instance** inst)
+        /* on success... */
+        if (0 == retval)
+        {
+            /* *inst is a valid instance. */
+            MODEL_ASSERT(property_mod_fido_instance_valid(*inst));
+        }
+        else
+        {
+            /* *inst is NULL. */
+            MODEL_ASSERT(NULL == (*inst));
+        }
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_create)
