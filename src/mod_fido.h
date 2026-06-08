@@ -33,7 +33,6 @@ typedef struct mod_fido_instance mod_fido_instance;
 struct mod_fido_instance
 {
     struct mtx fido_mtx;
-    int fido_mtx_initialized;
     sy_call_t *old_sys_ioctl;
     const struct fileops *old_pts_fo;
     struct fileops hooked_pts_fops;
