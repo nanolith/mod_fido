@@ -48,6 +48,17 @@ int
 property_mod_fido_instance_valid(
     const mod_fido_instance* inst);
 
+/**
+ * \brief The \ref mod_fido_instance has been hooked.
+ *
+ * \param inst          The instance to check.
+ *
+ * \returns 1 if the instance is hooked and 0 otherwise.
+ */
+int
+property_mod_fido_instance_hooked(
+    const mod_fido_instance* inst);
+
 /******************************************************************************/
 /* Start of constructors.                                                     */
 /******************************************************************************/
