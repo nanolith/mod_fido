@@ -65,5 +65,14 @@ property_mod_fido_auth_cache_entry_valid(
 int
 auth_cache_entry_cmp(auth_cache_entry *lhs, auth_cache_entry *rhs);
 
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    auth_cache_entry_cmp, auth_cache_entry* lhs, auth_cache_entry* rhs)
+        /* lhs is valid. */
+        MODEL_ASSERT(property_mod_fido_auth_cache_entry_valid(lhs));
+        /* rhs is valid. */
+        MODEL_ASSERT(property_mod_fido_auth_cache_entry_valid(rhs));
+MODEL_CONTRACT_PRECONDITIONS_END(auth_cache_entry_cmp)
+
 /* Red-black tree for the auth cache entries. */
 RB_PROTOTYPE(auth_cache_table, auth_cache_entry, link, auth_cache_entry_cmp)
