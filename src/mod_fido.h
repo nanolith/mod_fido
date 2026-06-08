@@ -129,6 +129,8 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     mod_fido_instance_release, mod_fido_instance* inst)
         /* inst is readable and writable. */
         MODEL_CHECK_OBJECT_RW(inst, sizeof(*inst));
+        /* inst->mtx must be valid. */
+        MODEL_ASSERT(property_mtx_valid(&inst->fido_mtx));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_release)
 
 /* function contract postconditions. */
