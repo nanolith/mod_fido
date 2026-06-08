@@ -32,7 +32,7 @@ MALLOC_DECLARE(M_FIDO);
 typedef struct mod_fido_instance mod_fido_instance;
 struct mod_fido_instance
 {
-    struct mtx doas_mtx;
+    struct mtx fido_mtx;
     sy_call_t *old_sys_ioctl;
     const struct fileops *old_pts_fo;
     struct fileops hooked_pts_fops;
