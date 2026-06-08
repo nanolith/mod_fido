@@ -74,5 +74,16 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         MODEL_ASSERT(property_mod_fido_auth_cache_entry_valid(rhs));
 MODEL_CONTRACT_PRECONDITIONS_END(auth_cache_entry_cmp)
 
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    auth_cache_entry_cmp, int retval, auth_cache_entry* lhs,
+    auth_cache_entry* rhs)
+        /* the result is one of -1, 0, or 1. */
+        MODEL_ASSERT(
+            retval == -1
+         || retval ==  0
+         || retval ==  1);
+MODEL_CONTRACT_POSTCONDITIONS_END(auth_cache_entry_cmp)
+
 /* Red-black tree for the auth cache entries. */
 RB_PROTOTYPE(auth_cache_table, auth_cache_entry, link, auth_cache_entry_cmp)
