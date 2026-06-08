@@ -14,6 +14,7 @@
 #include <sys/sysent.h>
 
 #include <mod_fido/function_contracts.h>
+#include <mod_fido/function_decl.h>
 #include <mod_fido/model_assert.h>
 
 #include "auth_cache.h"
@@ -46,3 +47,21 @@ struct mod_fido_instance
 int
 property_mod_fido_instance_valid(
     const mod_fido_instance* inst);
+
+/******************************************************************************/
+/* Start of constructors.                                                     */
+/******************************************************************************/
+
+/**
+ * \brief Create a \ref mod_fido_instance.
+ *
+ * \param inst          Pointer to the instance pointer to set with this
+ *                      instance on success.
+ *
+ * \returns a status code indicating success or failure.
+ *      - 0 on success.
+ *      - non-zero on failure.
+ */
+int FN_DECL_MUST_CHECK
+mod_fido_instance_create(
+    mod_fido_instance** inst);
