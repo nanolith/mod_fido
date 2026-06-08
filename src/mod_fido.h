@@ -107,3 +107,20 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
             MODEL_ASSERT(NULL == (*inst));
         }
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_create)
+
+/**
+ * \brief Release a \ref mod_fido_instance.
+ *
+ * \note Release will fail if the hooked count is greater than zero; the
+ * instance cannot be released until all hooked terminals and pseudoterminals
+ * have been closed.
+ *
+ * \param inst          The instance to release.
+ *
+ * \returns a status code indicating success or failure.
+ *      - 0 on success.
+ *      - non-zero on failure.
+ */
+int FN_DECL_MUST_CHECK
+mod_fido_instance_release(
+    mod_fido_instance* inst);
