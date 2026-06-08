@@ -149,6 +149,8 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
  * can't be undone, without crashing your machine. For testing, you might be
  * able to undo it without a crazy protection violation. Maybe.
  *
+ * This operation must be performed under the fido_mtx lock.
+ *
  * \param inst          The instance for this hooking operation.
  *
  * \returns a status code indicating success or failure.
@@ -156,21 +158,25 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
  *      - non-zero on failure.
  */
 void
-mod_fido_instance_hook_ioctl(
+mod_fido_instance_hook_ioctl_locked(
     mod_fido_instance* inst);
 
 /* function contract preconditions. */
 MODEL_CONTRACT_PRECONDITIONS_BEGIN(
-    mod_fido_instance_hook_ioctl, mod_fido_instance* inst)
+    mod_fido_instance_hook_ioctl_locked, mod_fido_instance* inst)
         /* inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(inst));
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
         /* inst is not yet hooked. */
         MODEL_ASSERT(!property_mod_fido_instance_hooked(inst));
-MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hook_ioctl)
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hook_ioctl_locked)
 
 /* function contract postconditions. */
 MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
-    mod_fido_instance_hook_ioctl, mod_fido_instance* inst)
+    mod_fido_instance_hook_ioctl_locked, mod_fido_instance* inst)
         /* inst is hooked. */
         MODEL_ASSERT(property_mod_fido_instance_hooked(inst));
-MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_ioctl)
+        /* inst is still locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_ioctl_locked)
