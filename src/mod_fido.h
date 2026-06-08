@@ -131,3 +131,8 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* inst is readable and writable. */
         MODEL_CHECK_OBJECT_RW(inst, sizeof(*inst));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_release)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_release, int retval, mod_fido_instance* inst)
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
