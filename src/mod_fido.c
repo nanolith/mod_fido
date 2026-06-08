@@ -11,7 +11,7 @@
 #include <sys/kernel.h>
 #include <sys/module.h>
 
-#include "auth_cache.h"
+#include "mod_fido.h"
 
 static int
 mod_fido_handler(module_t mod, int type, void *arg)
