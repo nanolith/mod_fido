@@ -180,3 +180,23 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* inst is still locked. */
         MODEL_ASSERT(property_mod_fido_instance_locked(inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_ioctl_locked)
+
+/**
+ * \brief Unhook the IOCTL syscall in the sysent table.
+ *
+ * \note This undoes the hack above. In an SMP system, this does NOT guarantee
+ * that a different kernel thread may still have this entry cached. This is
+ * useful when attempting to unload a debug module, but should be avoided in
+ * production. Use at your own risk.
+ *
+ * This operation must be performed under the fido_mtx lock.
+ *
+ * \param inst          The instance for this hooking operation.
+ *
+ * \returns a status code indicating success or failure.
+ *      - 0 on success.
+ *      - non-zero on failure.
+ */
+void
+mod_fido_instance_unhook_ioctl_locked(
+    mod_fido_instance* inst);
