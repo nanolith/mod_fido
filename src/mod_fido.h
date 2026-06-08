@@ -137,3 +137,24 @@ MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_release)
 MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
     mod_fido_instance_release, int retval, mod_fido_instance* inst)
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
+
+/******************************************************************************/
+/* Start of public methods.                                                   */
+/******************************************************************************/
+
+/**
+ * \brief Hook the IOCTL syscall in the sysent table.
+ *
+ * \note This is a total hack. In a production system, once this is done, it
+ * can't be undone, without crashing your machine. For testing, you might be
+ * able to undo it without a crazy protection violation. Maybe.
+ *
+ * \param inst          The instance for this hooking operation.
+ *
+ * \returns a status code indicating success or failure.
+ *      - 0 on success.
+ *      - non-zero on failure.
+ */
+int FN_DECL_MUST_CHECK
+mod_fido_instance_hook_ioctl(
+    mod_fido_instance* inst);
