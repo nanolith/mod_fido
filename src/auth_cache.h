@@ -32,6 +32,25 @@ struct auth_cache_entry
  */
 RB_HEAD(auth_cache_table, auth_cache_entry);
 
+/******************************************************************************/
+/* Start of model checking properties.                                        */
+/******************************************************************************/
+
+/**
+ * \brief Valid auth cache entry property.
+ *
+ * \param entry         The entry to check.
+ *
+ * \returns true if the entry is valid.
+ */
+bool
+property_mod_fido_auth_cache_entry_valid(
+    const auth_cache_entry* entry);
+
+/******************************************************************************/
+/* Start of public methods.                                                   */
+/******************************************************************************/
+
 /**
  * \brief Compare two auth_cache entries.
  *
