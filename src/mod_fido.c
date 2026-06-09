@@ -10,6 +10,7 @@
 #include <sys/param.h>
 #include <sys/kernel.h>
 #include <sys/module.h>
+#include <sys/mutex.h>
 
 #include "mod_fido.h"
 
@@ -21,9 +22,23 @@ mod_fido_handler(module_t mod, int type, void *arg)
     switch (type)
     {
         case MOD_LOAD:
+            error = mod_fido_instance_create(&mod_fido_global_inst);
+            if (0 != error)
+            {
+                return error;
+            }
+            mtx_lock(&mod_fido_global_inst->fido_mtx);
+            mod_fido_instance_hook_ioctl_locked(mod_fido_global_inst);
+            mtx_unlock(&mod_fido_global_inst->fido_mtx);
+            error = 0;
             break;
 
         case MOD_UNLOAD:
+            #ifdef DEBUG
+            error = mod_fido_instance_release(mod_fido_global_inst);
+            #else
+            error = EOPNOTSUPP;
+            #endif
             break;
 
         default:
