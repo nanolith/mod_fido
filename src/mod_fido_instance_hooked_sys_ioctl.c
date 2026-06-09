@@ -7,6 +7,8 @@
  * distribution for the license terms under which this software is distributed.
  */
 
+#include <sys/ttycom.h>
+
 #include "mod_fido.h"
 
 /**
@@ -28,6 +30,17 @@ mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args)
 
     switch (uap->com)
     {
+        case TIOCSCTTY:
+            retval = mod_fido_global_inst->old_sys_ioctl(td, args);
+            if (0 == retval)
+            {
+                int error =
+                    mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
+                        mod_fido_global_inst, td, uap, 0);
+                (void)error;
+            }
+            break;
+
         case TIOCSETVERAUTH:
             retval =
                 mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
