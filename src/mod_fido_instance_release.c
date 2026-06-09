@@ -65,6 +65,9 @@ mod_fido_instance_release(
     /* destroy the mutex. */
     mtx_destroy(&inst->fido_mtx);
 
+    /* reclaim inst memory. */
+    free(inst, M_FIDO);
+
     /* success. */
     retval = 0;
     goto done;
