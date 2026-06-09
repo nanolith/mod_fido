@@ -40,6 +40,11 @@ struct mod_fido_instance
     struct auth_cache_table auth_cache;
 };
 
+/**
+ * \brief The global mod_fido instance defined in mod_fido.c
+ */
+extern mod_fido_instance* mod_fido_global_inst;
+
 /******************************************************************************/
 /* Start of model checking properties.                                        */
 /******************************************************************************/
