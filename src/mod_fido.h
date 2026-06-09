@@ -41,7 +41,7 @@ struct mod_fido_instance
 };
 
 /**
- * \brief The global mod_fido instance defined in mod_fido.c
+ * \brief The global mod_fido instance defined in mod_fido_inst.c
  */
 extern mod_fido_instance* mod_fido_global_inst;
 
