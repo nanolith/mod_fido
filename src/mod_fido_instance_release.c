@@ -48,8 +48,7 @@ mod_fido_instance_release(
     /* disable the hook if it has been enabled. */
     if (NULL != inst->old_sys_ioctl)
     {
-        /* disable this hook. */
-        sysent[SYS_ioctl].sy_call = inst->old_sys_ioctl;
+        mod_fido_instance_unhook_ioctl_locked(inst);
     }
 
     /* release all entries in our auth cache table. */
