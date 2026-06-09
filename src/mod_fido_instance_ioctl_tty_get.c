@@ -19,6 +19,9 @@
 /**
  * \brief Try to get the tty pointer from a given set of ioctl args.
  *
+ * \note As a side-effect, this method will hook a pseudo-terminal for further
+ * processing.
+ *
  * \param inst          The mod_fido instance for this handler.
  * \param td            The thread on which this system call was made.
  * \param args          The arguments for this system call.
