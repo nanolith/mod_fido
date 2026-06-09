@@ -444,3 +444,13 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* fp is valid. */
         MODEL_ASSERT(property_file_handle_valid(fp));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_hook_pts_fops_locked, mod_fido_instance* inst,
+    struct file* fp)
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
+        /* old file options preserved. */
+        MODEL_ASSERT(NULL != inst->old_pts_fo);
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
