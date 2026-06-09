@@ -419,3 +419,14 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
             MODEL_ASSERT(property_tty_valid(retval));
         }
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_ioctl_tty_get)
+
+/**
+ * \brief Hook the file options table for a given file handle.
+ *
+ * \param inst          The mod_fido instance for this operation.
+ * \param fp            The file handle to hook.
+ *
+ * \returns a error code. 0 on success and an error number on failure.
+ */
+int
+mod_fido_instance_hook_pts_fops(mod_fido_instance* inst, struct file *fp);
