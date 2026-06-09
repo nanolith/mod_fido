@@ -31,6 +31,7 @@ mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args)
     switch (uap->com)
     {
         case TIOCSCTTY:
+        case TIOCNOTTY:
             retval = mod_fido_global_inst->old_sys_ioctl(td, args);
             if (0 == retval)
             {
