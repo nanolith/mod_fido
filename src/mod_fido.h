@@ -432,9 +432,19 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_ioctl_tty_get_locked)
  *
  * \param inst          The mod_fido instance for this operation.
  * \param fp            The file handle to hook.
- *
- * \returns a error code. 0 on success and an error number on failure.
  */
-int
+void
 mod_fido_instance_hook_pts_fops_locked(
     mod_fido_instance* inst, struct file *fp);
+
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_hook_pts_fops_locked, mod_fido_instance* inst,
+    struct file* fp)
+        /* inst is valid. */
+        MODEL_ASSERT(property_mod_fido_instance_valid(inst));
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
+        /* fp is valid. */
+        MODEL_ASSERT(property_file_handle_valid(fp));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
