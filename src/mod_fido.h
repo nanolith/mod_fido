@@ -251,3 +251,13 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* args is valid. */
         MODEL_ASSERT(property_ioctl_args_valid((struct ioctl_args*)args));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
+
+/* function contract preconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_hooked_sys_ioctl, int retval, struct thread* td,
+    void* args)
+        /* the return value is one of the expected return values for ioctl. */
+        MODEL_ASSERT(property_error_code_is_expected_for_ioctl_syscall(retval));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
