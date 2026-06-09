@@ -454,3 +454,13 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* old file options preserved. */
         MODEL_ASSERT(NULL != inst->old_pts_fo);
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
+
+/**
+ * \brief Hooked method for closing a file handle.
+ *
+ * \param fp            The file handle to hook.
+ * \param td            The thread for this operation.
+ */
+void
+mod_fido_instance_hooked_file_handle_close(
+    struct file *fp, struct thread* td);
