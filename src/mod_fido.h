@@ -13,6 +13,7 @@
 #include <sys/kernel.h>
 #include <sys/malloc.h>
 #include <sys/file.h>
+#include <sys/sysproto.h>
 #include <sys/sysent.h>
 
 #include <mod_fido/function_contracts.h>
@@ -273,4 +274,4 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
  */
 int
 mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
-    mod_fido_instance* inst, struct thread *td, void *args);
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
