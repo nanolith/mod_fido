@@ -480,3 +480,13 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* td is valid. */
         MODEL_ASSERT(property_thread_valid(td));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_file_handle_close)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_hooked_file_handle_close, int retval, struct file* fp,
+    struct thread* td)
+        /* the return value is an expected return value for file close. */
+        MODEL_ASSERT(property_error_code_is_expected_for_file_close(retval));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hooked_file_handle_close)
