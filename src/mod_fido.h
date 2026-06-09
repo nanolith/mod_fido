@@ -10,6 +10,7 @@
 #pragma once
 
 #include <sys/param.h>
+#include <sys/ioccom.h>
 #include <sys/kernel.h>
 #include <sys/malloc.h>
 #include <sys/file.h>
@@ -21,6 +22,9 @@
 #include <mod_fido/model_assert.h>
 
 #include "auth_cache.h"
+
+/* TTY IOCTLs. */
+#define TIOCSETVERAUTH    _IOW('t', 200, int)
 
 /**
  * \brief The arena for the fido module.
