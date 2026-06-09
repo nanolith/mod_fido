@@ -466,3 +466,17 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
 int
 mod_fido_instance_hooked_file_handle_close(
     struct file *fp, struct thread* td);
+
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_hooked_file_handle_close, struct file* fp,
+    struct thread* td)
+        /* mod_fido_global_inst is valid. */
+        MODEL_ASSERT(property_mod_fido_instance_valid(mod_fido_global_inst));
+        /* inst is not locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+        /* fp is valid. */
+        MODEL_ASSERT(property_file_handle_valid(fp));
+        /* td is valid. */
+        MODEL_ASSERT(property_thread_valid(td));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_file_handle_close)
