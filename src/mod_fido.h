@@ -279,7 +279,7 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
 /* function contract preconditions. */
 MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     mod_fido_instance_ioctl_TIOCSETVERAUTH_handler,
-    mod_fido_instance* inst, struct thread* td, void* args)
+    mod_fido_instance* inst, struct thread* td, struct ioctl_args* args)
         /* inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(inst));
         /* inst is NOT locked. */
@@ -287,6 +287,18 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* td is valid. */
         MODEL_ASSERT(property_kernel_thread_valid(td));
         /* args is valid. */
-        MODEL_ASSERT(property_ioctl_args_valid((struct ioctl_args*)args));
+        MODEL_ASSERT(property_ioctl_args_valid(args));
 MODEL_CONTRACT_PRECONDITIONS_END(
+    mod_fido_instance_ioctl_TIOCSETVERAUTH_handler)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_ioctl_TIOCSETVERAUTH_handler,
+    int retval, mod_fido_instance* inst, struct thread* td,
+    struct ioctl_args* args)
+        /* the return value is one of the expected return values for ioctl. */
+        MODEL_ASSERT(property_error_code_is_expected_for_ioctl_syscall(retval));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(
     mod_fido_instance_ioctl_TIOCSETVERAUTH_handler)
