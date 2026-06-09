@@ -460,7 +460,9 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_pts_fops_locked)
  *
  * \param fp            The file handle to hook.
  * \param td            The thread for this operation.
+ *
+ * \returns a error code. 0 on success and an error number on failure.
  */
-void
+int
 mod_fido_instance_hooked_file_handle_close(
     struct file *fp, struct thread* td);
