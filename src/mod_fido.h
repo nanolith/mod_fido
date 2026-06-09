@@ -236,3 +236,16 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_unhook_ioctl_locked)
  */
 int
 mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args);
+
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_hooked_sys_ioctl, struct thread* td, void* args)
+        /* mod_fido_global_inst is valid. */
+        MODEL_ASSERT(property_mod_fido_instance_valid(mod_fido_global_inst));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+        /* td is valid. */
+        MODEL_ASSERT(property_kernel_thread_valid(td));
+        /* args is valid. */
+        MODEL_ASSERT(property_ioctl_args_valid((struct ioctl_args*)args));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
