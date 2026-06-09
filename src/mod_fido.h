@@ -478,7 +478,7 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         /* fp is valid. */
         MODEL_ASSERT(property_file_handle_valid(fp));
         /* td is valid. */
-        MODEL_ASSERT(property_thread_valid(td));
+        MODEL_ASSERT(property_kernel_thread_valid(td));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_file_handle_close)
 
 /* function contract postconditions. */
