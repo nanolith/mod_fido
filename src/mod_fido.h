@@ -379,6 +379,6 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* the return value is one of the expected return values for ioctl. */
         MODEL_ASSERT(property_error_code_is_expected_for_ioctl_syscall(retval));
         /* inst is NOT locked. */
-        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+        MODEL_ASSERT(!property_mod_fido_instance_locked(inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(
     mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler)
