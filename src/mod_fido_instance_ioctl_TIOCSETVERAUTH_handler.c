@@ -45,6 +45,7 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
         goto done;
     }
 
+    /* perform a privilege check. */
     retval = priv_check(td, PRIV_DRIVER);
     if (0 != retval)
     {
