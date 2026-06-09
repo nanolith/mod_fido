@@ -65,7 +65,7 @@ mod_fido_instance_ioctl_tty_get_locked(
             tp = fp->f_data;
             if (tp != NULL) {
                 /* hook our close tracker to the file pointer. */
-                mod_fido_instance_hook_pts_fops(inst, fp);
+                mod_fido_instance_hook_pts_fops_locked(inst, fp);
             }
         }
 

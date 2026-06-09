@@ -436,4 +436,5 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_ioctl_tty_get_locked)
  * \returns a error code. 0 on success and an error number on failure.
  */
 int
-mod_fido_instance_hook_pts_fops(mod_fido_instance* inst, struct file *fp);
+mod_fido_instance_hook_pts_fops_locked(
+    mod_fido_instance* inst, struct file *fp);
