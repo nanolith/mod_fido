@@ -220,3 +220,14 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* inst is still locked. */
         MODEL_ASSERT(property_mod_fido_instance_locked(inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_unhook_ioctl_locked)
+
+/**
+ * \brief IOCTL hook for mod_fido.
+ *
+ * \param td            The thread on which this system call was made.
+ * \param args          The arguments for this system call.
+ *
+ * \returns a error code. 0 on success and an error number on failure.
+ */
+int
+mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args);
