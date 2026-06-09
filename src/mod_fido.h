@@ -261,3 +261,16 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* inst is NOT locked. */
         MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
+
+/**
+ * \brief Handle custom TTY TIOCSETVERAUTH IOCTL.
+ *
+ * \param inst          The mod_fido instance for this handler.
+ * \param td            The thread on which this system call was made.
+ * \param args          The arguments for this system call.
+ *
+ * \returns a error code. 0 on success and an error number on failure.
+ */
+int
+mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
+    mod_fido_instance* inst, struct thread *td, void *args);
