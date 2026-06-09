@@ -370,3 +370,15 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         MODEL_ASSERT(property_ioctl_args_valid(args));
 MODEL_CONTRACT_PRECONDITIONS_END(
     mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler)
+
+/* function contract postconditions. */
+MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
+    mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler,
+    int retval, mod_fido_instance* inst, struct thread* td,
+    struct ioctl_args* args)
+        /* the return value is one of the expected return values for ioctl. */
+        MODEL_ASSERT(property_error_code_is_expected_for_ioctl_syscall(retval));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
+MODEL_CONTRACT_POSTCONDITIONS_END(
+    mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler)
