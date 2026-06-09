@@ -351,17 +351,21 @@ MODEL_CONTRACT_POSTCONDITIONS_END(
  * \param inst          The mod_fido instance for this handler.
  * \param td            The thread on which this system call was made.
  * \param args          The arguments for this system call.
+ * \param privcheck     Set to 1 to perform the privilege check, and 0
+ *                      otherwise.
  *
  * \returns a error code. 0 on success and an error number on failure.
  */
 int
 mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
-    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args,
+    int privcheck);
 
 /* function contract preconditions. */
 MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler,
-    mod_fido_instance* inst, struct thread* td, struct ioctl_args* args)
+    mod_fido_instance* inst, struct thread* td, struct ioctl_args* args,
+    int privcheck)
         /* inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(inst));
         /* inst is NOT locked. */
@@ -377,7 +381,7 @@ MODEL_CONTRACT_PRECONDITIONS_END(
 MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
     mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler,
     int retval, mod_fido_instance* inst, struct thread* td,
-    struct ioctl_args* args)
+    struct ioctl_args* args, int privcheck)
         /* the return value is one of the expected return values for ioctl. */
         MODEL_ASSERT(property_error_code_is_expected_for_ioctl_syscall(retval));
         /* inst is NOT locked. */

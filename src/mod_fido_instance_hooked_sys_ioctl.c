@@ -43,7 +43,7 @@ mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args)
         case TIOCCLRVERAUTH:
             retval =
                 mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
-                    mod_fido_global_inst, td, uap);
+                    mod_fido_global_inst, td, uap, 1);
             break;
 
         default:

@@ -21,19 +21,23 @@
  * \param inst          The mod_fido instance for this handler.
  * \param td            The thread on which this system call was made.
  * \param args          The arguments for this system call.
+ * \param privcheck     Set to 1 to perform the privilege check, and 0
+ *                      otherwise.
  *
  * \returns a error code. 0 on success and an error number on failure.
  */
 int
 mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
-    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args)
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args,
+    int privcheck)
 {
     int retval;
     struct tty* tp;
     auth_cache_entry find_entry;
 
     MODEL_CONTRACT_CHECK_PRECONDITIONS(
-        mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler, inst, td, args);
+        mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler, inst, td, args,
+        privcheck);
 
     /* try to get the tty pointer. */
     mtx_lock(&inst->fido_mtx);
@@ -46,10 +50,13 @@ mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
     }
 
     /* perform a privilege check. */
-    retval = priv_check(td, PRIV_DRIVER);
-    if (0 != retval)
+    if (privcheck)
     {
-        goto done;
+        retval = priv_check(td, PRIV_DRIVER);
+        if (0 != retval)
+        {
+            goto done;
+        }
     }
 
     /* pre-calculate data. */
@@ -77,7 +84,8 @@ mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
 
 done:
     MODEL_CONTRACT_CHECK_POSTCONDITIONS(
-        mod_fido_instance_ioctl_TIOCCHKVERAUTH_handler, retval, inst, td, args);
+        mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler, retval, inst, td, args,
+        privcheck);
 
     return retval;
 }
