@@ -26,6 +26,7 @@
 /* TTY IOCTLs. */
 #define TIOCSETVERAUTH    _IOW('t', 200, int)
 #define TIOCCHKVERAUTH    _IOR('t', 201, int)
+#define TIOCCLRVERAUTH    _IO('t', 202)
 
 /**
  * \brief The arena for the fido module.
