@@ -52,6 +52,7 @@ mod_fido_instance_release(
         sysent[SYS_ioctl].sy_call = inst->old_sys_ioctl;
     }
 
+    /* release all entries in our auth cache table. */
     struct auth_cache_entry* entry;
     struct auth_cache_entry* tmp;
     RB_FOREACH_SAFE(entry, auth_cache_table, &inst->auth_cache, tmp) {
