@@ -405,6 +405,8 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     struct ioctl_args* args)
         /* inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(inst));
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
         /* td is valid. */
         MODEL_ASSERT(property_kernel_thread_valid(td));
         /* args is valid. */
