@@ -200,3 +200,14 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hook_ioctl_locked)
 void
 mod_fido_instance_unhook_ioctl_locked(
     mod_fido_instance* inst);
+
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_unhook_ioctl_locked, mod_fido_instance* inst)
+        /* inst is valid. */
+        MODEL_ASSERT(property_mod_fido_instance_valid(inst));
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
+        /* inst is hooked. */
+        MODEL_ASSERT(property_mod_fido_instance_hooked(inst));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_unhook_ioctl_locked)
