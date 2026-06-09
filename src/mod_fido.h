@@ -342,3 +342,16 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(
     mod_fido_instance_ioctl_TIOCCHKVERAUTH_handler)
+
+/**
+ * \brief Handle custom TTY TIOCCLRVERAUTH IOCTL.
+ *
+ * \param inst          The mod_fido instance for this handler.
+ * \param td            The thread on which this system call was made.
+ * \param args          The arguments for this system call.
+ *
+ * \returns a error code. 0 on success and an error number on failure.
+ */
+int
+mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
