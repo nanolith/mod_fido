@@ -242,6 +242,8 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     mod_fido_instance_hooked_sys_ioctl, struct thread* td, void* args)
         /* mod_fido_global_inst is valid. */
         MODEL_ASSERT(property_mod_fido_instance_valid(mod_fido_global_inst));
+        /* mod_fido_global_inst is hooked. */
+        MODEL_ASSERT(property_mod_fido_instance_hooked(mod_fido_global_inst));
         /* inst is NOT locked. */
         MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
         /* td is valid. */
