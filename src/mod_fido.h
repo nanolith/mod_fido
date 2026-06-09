@@ -382,3 +382,16 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         MODEL_ASSERT(!property_mod_fido_instance_locked(inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(
     mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler)
+
+/**
+ * \brief Try to get the tty pointer from a given set of ioctl args.
+ *
+ * \param inst          The mod_fido instance for this handler.
+ * \param td            The thread on which this system call was made.
+ * \param args          The arguments for this system call.
+ *
+ * \returns the tty for this ioctl if found, or NULL if not found.
+ */
+struct tty*
+mod_fido_instance_ioctl_tty_get(
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
