@@ -252,7 +252,7 @@ MODEL_CONTRACT_PRECONDITIONS_BEGIN(
         MODEL_ASSERT(property_ioctl_args_valid((struct ioctl_args*)args));
 MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_hooked_sys_ioctl)
 
-/* function contract preconditions. */
+/* function contract postconditions. */
 MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
     mod_fido_instance_hooked_sys_ioctl, int retval, struct thread* td,
     void* args)
