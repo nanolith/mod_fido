@@ -158,10 +158,6 @@ MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_release)
  * This operation must be performed under the fido_mtx lock.
  *
  * \param inst          The instance for this hooking operation.
- *
- * \returns a status code indicating success or failure.
- *      - 0 on success.
- *      - non-zero on failure.
  */
 void
 mod_fido_instance_hook_ioctl_locked(
