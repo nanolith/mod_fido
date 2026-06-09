@@ -80,13 +80,10 @@ mod_fido_instance_ioctl_TIOCCHKVERAUTH_handler(
         goto done;
     }
 
-    /* remove entry if it has expired. */
-    if (current_secs >= entry->expire_time)
-    {
-        RB_REMOVE(auth_cache_table, &inst->auth_cache, entry);
-        mtx_unlock(&inst->fido_mtx);
-        free(entry, M_FIDO);
-    }
+    /* remove for any other circumstance (e.g. uid mismatch or expired). */
+    RB_REMOVE(auth_cache_table, &inst->auth_cache, entry);
+    mtx_unlock(&inst->fido_mtx);
+    free(entry, M_FIDO);
 
     /* valid credentials not found. */
     retval = ENOENT;
