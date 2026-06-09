@@ -417,6 +417,8 @@ MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_ioctl_tty_get)
 MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
     mod_fido_instance_ioctl_tty_get, struct tty* retval,
     mod_fido_instance* inst, struct thread* td, struct ioctl_args* args)
+        /* inst is locked. */
+        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
         /* if the returned tty is not NULL... */
         if (NULL != retval)
         {
