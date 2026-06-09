@@ -29,7 +29,7 @@
  * \returns the tty for this ioctl if found, or NULL if not found.
  */
 struct tty*
-mod_fido_instance_ioctl_tty_get(
+mod_fido_instance_ioctl_tty_get_locked(
     mod_fido_instance* inst, struct thread *td, struct ioctl_args* args)
 {
     int retval;
@@ -40,7 +40,7 @@ mod_fido_instance_ioctl_tty_get(
     cap_rights_t rights;
 
     MODEL_CONTRACT_CHECK_PRECONDITIONS(
-        mod_fido_instance_ioctl_tty_get, inst, td, args);
+        mod_fido_instance_ioctl_tty_get_locked, inst, td, args);
 
     /* attempt to get the file handle for this descriptor. */
     retval = fget(td, args->fd, cap_rights_init(&rights, CAP_IOCTL), &fp);
@@ -91,7 +91,7 @@ mod_fido_instance_ioctl_tty_get(
     }
 
     MODEL_CONTRACT_CHECK_POSTCONDITIONS(
-        mod_fido_instance_ioctl_tty_get, tp, inst, td, args);
+        mod_fido_instance_ioctl_tty_get_locked, tp, inst, td, args);
 
     return tp;
 }
