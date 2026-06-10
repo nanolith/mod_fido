@@ -7,11 +7,6 @@
  * distribution for the license terms under which this software is distributed.
  */
 
-#include <sys/param.h>
-#include <sys/kernel.h>
-#include <sys/module.h>
-#include <sys/mutex.h>
-
 #include "mod_fido.h"
 
 static int
