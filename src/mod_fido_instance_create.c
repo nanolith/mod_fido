@@ -7,8 +7,6 @@
  * distribution for the license terms under which this software is distributed.
  */
 
-#include <sys/mutex.h>
-
 #include "mod_fido.h"
 
 /**
