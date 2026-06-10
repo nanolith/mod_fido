@@ -7,9 +7,6 @@
  * distribution for the license terms under which this software is distributed.
  */
 
-#include <sys/syscall.h>
-#include <sys/sysproto.h>
-
 #include "mod_fido.h"
 
 /**
