@@ -15,6 +15,8 @@
 #include <sys/malloc.h>
 #include <sys/module.h>
 #include <sys/file.h>
+#include <sys/priv.h>
+#include <sys/proc.h>
 #include <sys/sysproto.h>
 #include <sys/sysent.h>
 #include <sys/systm.h>
