@@ -16,6 +16,8 @@
 #include <sys/file.h>
 #include <sys/sysproto.h>
 #include <sys/sysent.h>
+#include <sys/systm.h>
+#include <sys/tty.h>
 
 #include <mod_fido/function_contracts.h>
 #include <mod_fido/function_decl.h>

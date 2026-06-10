@@ -7,10 +7,6 @@
  * distribution for the license terms under which this software is distributed.
  */
 
-#include <sys/param.h>
-#include <sys/systm.h>
-#include <sys/tty.h>
-
 #include "mod_fido.h"
 
 /**
