@@ -7,8 +7,6 @@
  * distribution for the license terms under which this software is distributed.
  */
 
-#include <sys/param.h>
-
-#include "auth_cache.h"
+#include "mod_fido.h"
 
 RB_GENERATE(auth_cache_table, auth_cache_entry, link, auth_cache_entry_cmp)
