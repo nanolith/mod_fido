@@ -12,6 +12,8 @@
 #include <sys/param.h>
 #include <sys/ioccom.h>
 #include <sys/kernel.h>
+#include <sys/capsicum.h>
+#include <sys/conf.h>
 #include <sys/malloc.h>
 #include <sys/module.h>
 #include <sys/file.h>
@@ -21,6 +23,7 @@
 #include <sys/sysent.h>
 #include <sys/systm.h>
 #include <sys/tty.h>
+#include <sys/vnode.h>
 
 #include <mod_fido/function_contracts.h>
 #include <mod_fido/function_decl.h>
