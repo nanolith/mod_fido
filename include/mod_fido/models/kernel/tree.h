@@ -28,3 +28,5 @@ type* name##_next(type*); \
 type* name##_remove(type*, type*);
 
 #define RB_START(name,root) name##_start(root)
+
+#define RB_NEXT(name,entry) name##_next(entry)
