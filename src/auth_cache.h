@@ -11,8 +11,13 @@
 
 #include <mod_fido/function_contracts.h>
 #include <mod_fido/model_assert.h>
+
+#if !CBMC
 #include <sys/tree.h>
 #include <sys/types.h>
+#else /*CBMC*/
+#include <mod_fido/models/kernel/tree.h>
+#endif
 
 /**
  * \brief An entry in the auth cache.
