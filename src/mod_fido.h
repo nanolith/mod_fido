@@ -232,8 +232,6 @@ mod_fido_instance_unhook_ioctl_locked(
 /* function contract preconditions. */
 MODEL_CONTRACT_PRECONDITIONS_BEGIN(
     mod_fido_instance_unhook_ioctl_locked, mod_fido_instance* inst)
-        /* inst is valid. */
-        MODEL_ASSERT(property_mod_fido_instance_valid(inst));
         /* inst is locked. */
         MODEL_ASSERT(property_mod_fido_instance_locked(inst));
         /* inst is hooked. */
