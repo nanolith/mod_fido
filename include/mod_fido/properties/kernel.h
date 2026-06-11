@@ -12,3 +12,12 @@
 #include <stdbool.h>
 
 extern int kernel_mtx_valid;
+
+/**
+ * \brief Returns true if the given mutex is valid.
+ *
+ * \param mutex             The mutex to check.
+ *
+ * \returns true if this mutex is valid.
+ */
+bool property_mtx_valid(const struct mtx* mutex);
