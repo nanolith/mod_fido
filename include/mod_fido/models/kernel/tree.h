@@ -21,3 +21,8 @@ struct { \
 struct name { \
     struct type *rbh_root; \
 }
+
+#define RB_PROTOTYPE(name, type, y, z) \
+type* name##_start(type*); \
+type* name##_next(type*); \
+type* name##_remove(type*, type*);
