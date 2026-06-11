@@ -36,3 +36,5 @@ type* name##_remove(type*, type*);
 
 #define RB_REMOVE(name, root, entry) \
     name##_remove(root, entry)
+
+#define RB_INIT(root) (root)->rbh_root = NULL
