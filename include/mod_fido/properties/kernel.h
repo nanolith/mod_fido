@@ -21,3 +21,12 @@ extern int kernel_mtx_valid;
  * \returns true if this mutex is valid.
  */
 bool property_mtx_valid(const struct mtx* mutex);
+
+/**
+ * \brief Returns true if the given mutex is locked.
+ *
+ * \param mutex             The mutex to check.
+ *
+ * \returns true if this mutex is locked.
+ */
+bool property_mtx_locked(const struct mtx* mutex);
