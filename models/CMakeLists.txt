@@ -5,6 +5,6 @@ SET(CBMC_OPTIONS
     "--drop-unused-functions" "--unwind" "10" "--unwinding-assertions")
 
 #CBMC build options
-SET(CBMC_BUILD_OPTIONS "-D_ANSI_LIBRARY -DCBMC=1 -nostdinc -I /usr/src/sys/amd64/include -I /usr/src/sys -I ${CMAKE_SOURCE_DIR}/models -I ${CMAKE_SOURCE_DIR}/src -I ${CMAKE_BINARY_DIR}/src")
+SET(CBMC_BUILD_OPTIONS "-D_ANSI_LIBRARY -DCBMC=1 -I ${CMAKE_SOURCE_DIR}/models -I ${CMAKE_SOURCE_DIR}/src -I ${CMAKE_BINARY_DIR}/src")
 
 ADD_SUBDIRECTORY(auth_cache_entry_cmp)
