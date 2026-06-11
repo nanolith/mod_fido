@@ -30,3 +30,6 @@ type* name##_remove(type*, type*);
 #define RB_START(name,root) name##_start(root)
 
 #define RB_NEXT(name,entry) name##_next(entry)
+
+#define RB_FOREACH_SAFE(i, name, root, x) \
+    for (i = RB_START(name, root); NULL != i; i = RB_NEXT(name, i))
