@@ -16,3 +16,8 @@
 struct { \
     struct type *rbe_link[3]; \
 }
+
+#define RB_HEAD(name, type) \
+struct name { \
+    struct type *rbh_root; \
+}
