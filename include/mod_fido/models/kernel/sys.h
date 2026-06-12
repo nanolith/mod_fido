@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include <errno.h>
 #include <pthread.h>
 #include <mod_fido/properties/kernel.h>
 
@@ -41,6 +42,8 @@ struct moduledata {
     modeventhand_t evhand;
     void* priv;
 };
+
+#define DECLARE_MODULE(w, x, y, z) REQUIRE_SEMICOLON_HERE
 
 extern struct sysent sysent[];
 
