@@ -1,6 +1,8 @@
 SET(CBMC_OPTIONS
     "--bounds-check" "--pointer-check" "--memory-leak-check"
-#    "--malloc-may-fail" "--malloc-fail-null" "--div-by-zero-check"
+#   Note: in the kernel, we specifically use M_WAITOK, which pauses the kernel
+#   thread until the allocation succeeds.
+#    "--malloc-may-fail" "--malloc-fail-null"
     "--no-malloc-may-fail" "--div-by-zero-check"
     "--pointer-overflow-check" "--trace" "--stop-on-fail"
     "--drop-unused-functions" "--unwind" "10" "--unwinding-assertions")
