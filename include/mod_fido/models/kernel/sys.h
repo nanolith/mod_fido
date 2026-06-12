@@ -26,3 +26,5 @@ struct mtx
 struct fileops
 {
 };
+
+#define M_WAITOK 1
