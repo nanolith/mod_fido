@@ -9,6 +9,7 @@
 
 #pragma once
 
+#if !CBMC
 #include <sys/param.h>
 #include <sys/ioccom.h>
 #include <sys/kernel.h>
@@ -25,6 +26,9 @@
 #include <sys/systm.h>
 #include <sys/tty.h>
 #include <sys/vnode.h>
+#else /*CBMC*/
+#include <mod_fido/models/kernel/sys.h>
+#endif
 
 #include <mod_fido/function_contracts.h>
 #include <mod_fido/function_decl.h>
