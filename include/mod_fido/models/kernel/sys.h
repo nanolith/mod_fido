@@ -15,3 +15,10 @@
 #define MALLOC_DECLARE(x) extern const int x
 
 typedef void sy_call_t;
+
+struct mtx
+{
+    pthread_mutex_t mtx;
+    int valid;
+    int locked;
+};
