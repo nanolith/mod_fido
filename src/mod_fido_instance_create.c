@@ -37,6 +37,11 @@ mod_fido_instance_create(
     /* initialize auth cache table. */
     RB_INIT(&tmp->auth_cache);
 
+    /* initialize all other data. */
+    tmp->old_sys_ioctl = NULL;
+    tmp->old_pts_fo = NULL;
+    tmp->hooked_count = 0;
+
     /* success. */
     retval = 0;
     *inst = tmp;
