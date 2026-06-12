@@ -39,3 +39,12 @@ bool property_mtx_locked(const struct mtx* mutex);
  * \returns true if this thread is valid.
  */
 bool property_kernel_thread_valid(const struct thread* td);
+
+/**
+ * \brief Returns true if the given ioctl args are valid.
+ *
+ * \param args              The arguments to check.
+ *
+ * \returns true if these arguments are valid.
+ */
+bool property_ioctl_args_valid(const struct ioctl_args* args);
