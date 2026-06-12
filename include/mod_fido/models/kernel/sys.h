@@ -92,3 +92,5 @@ typedef struct cap_rights cap_rights_t;
 struct cap_rights
 {
 };
+
+#define CAP_IOCTL 1
