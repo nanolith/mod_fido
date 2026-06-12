@@ -26,6 +26,10 @@ struct mtx
     int locked;
 };
 
+struct tty
+{
+};
+
 struct fileops
 {
 };
