@@ -44,3 +44,4 @@ extern struct sysent sysent[];
 #define MTX_DEF 1
 
 #define MOD_LOAD 0
+#define MOD_UNLOAD 1
