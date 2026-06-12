@@ -14,6 +14,8 @@
 
 #define MALLOC_DECLARE(x) extern const int x
 
+typedef int module_t;
+
 typedef void sy_call_t;
 
 struct mtx
