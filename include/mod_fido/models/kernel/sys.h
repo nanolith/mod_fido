@@ -35,6 +35,13 @@ struct sysent {
 
 typedef int (*modeventhand_t)(module_t, int, void*);
 
+typedef struct moduledata moduledata_t;
+struct moduledata {
+    const char* name;
+    modeventhand_t evhand;
+    void* priv;
+};
+
 extern struct sysent sysent[];
 
 #define MAX_SYSENT_ENTRIES 3
