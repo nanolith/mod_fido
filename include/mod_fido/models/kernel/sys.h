@@ -33,6 +33,8 @@ struct sysent {
     sy_call_t* sy_call;
 };
 
+typedef int (*modeventhand_t)(module_t, int, void*);
+
 extern struct sysent sysent[];
 
 #define MAX_SYSENT_ENTRIES 3
