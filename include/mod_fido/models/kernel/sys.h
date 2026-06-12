@@ -10,5 +10,8 @@
 #pragma once
 
 #include <pthread.h>
+#include <mod_fido/properties/kernel.h>
 
 #define MALLOC_DECLARE(x) extern const int x
+
+typedef void sy_call_t;
