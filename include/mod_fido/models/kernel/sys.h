@@ -73,6 +73,12 @@ struct vnode
 
 #define VCHR 1
 
+struct file
+{
+    int f_type;
+    struct vnode* f_data;
+};
+
 struct sysent {
     sy_call_t* sy_call;
 };
