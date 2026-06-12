@@ -27,6 +27,10 @@ struct fileops
 {
 };
 
+struct sysent {
+    sy_call_t* sy_call;
+};
+
 #define M_WAITOK 1
 #define M_ZERO   2
 #define MTX_DEF 1
