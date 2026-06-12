@@ -30,6 +30,11 @@ struct tty
 {
 };
 
+struct session
+{
+    struct tty* s_ttyp;
+};
+
 struct fileops
 {
 };
