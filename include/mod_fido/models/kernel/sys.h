@@ -110,7 +110,10 @@ extern struct sysent sysent[];
 typedef struct cap_rights cap_rights_t;
 struct cap_rights
 {
+    int caps;
 };
+
+cap_rights_t* cap_rights_init(cap_rights_t *rights, int capability);
 
 #define CAP_IOCTL 1
 
