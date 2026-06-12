@@ -51,6 +51,11 @@ struct thread
     struct proc* td_proc;
 };
 
+struct ioctl_args
+{
+    int fd;
+};
+
 struct fileops
 {
 };
