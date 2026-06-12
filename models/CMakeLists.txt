@@ -7,10 +7,16 @@ SET(CBMC_OPTIONS
     "--pointer-overflow-check" "--trace" "--stop-on-fail"
     "--drop-unused-functions" "--unwind" "10" "--unwinding-assertions")
 
+set(MAKE_DEBUG_FLAG "")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(MAKE_DEBUG_FLAG "-DDEBUG=1")
+endif()
+
 #CBMC build options
-SET(CBMC_BUILD_OPTIONS "-D_ANSI_LIBRARY -DCBMC=1 -I ${CMAKE_SOURCE_DIR}/models -I ${CMAKE_SOURCE_DIR}/src -I ${CMAKE_BINARY_DIR}/src")
+SET(CBMC_BUILD_OPTIONS "-D_ANSI_LIBRARY -DCBMC=1 -I ${CMAKE_SOURCE_DIR}/models -I ${CMAKE_SOURCE_DIR}/src -I ${CMAKE_BINARY_DIR}/src ${MAKE_DEBUG_FLAG}")
 
 ADD_SUBDIRECTORY(auth_cache_entry_cmp)
+ADD_SUBDIRECTORY(mod_fido_handler)
 ADD_SUBDIRECTORY(mod_fido_instance_create_release)
 ADD_SUBDIRECTORY(mod_fido_instance_hook_ioctl_locked)
 ADD_SUBDIRECTORY(mod_fido_instance_hook_ioctl_locked_shadow)
