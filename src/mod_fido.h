@@ -522,3 +522,17 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
         /* inst is NOT locked. */
         MODEL_ASSERT(!property_mod_fido_instance_locked(mod_fido_global_inst));
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_hooked_file_handle_close)
+
+/**
+ * \brief Entry point for mod_fido.
+ *
+ * \param mod           The module instance.
+ * \param type          The type of operation.
+ * \param arg           The argument passed in.
+ *
+ * \returns a status code indicating success or failure.
+ *      - 0 on success.
+ *      - a non-zero error code on failure.
+ */
+int
+mod_fido_handler(module_t mod, int type, void *arg);

@@ -9,7 +9,7 @@
 
 #include "mod_fido.h"
 
-static int
+int
 mod_fido_handler(module_t mod, int type, void *arg)
 {
     int error = 0;
