@@ -43,6 +43,8 @@ struct proc
     struct session* p_session;
 };
 
+#define PROC_LOCK(proc)
+
 struct fileops
 {
 };
