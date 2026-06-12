@@ -96,3 +96,4 @@ struct cap_rights
 #define CAP_IOCTL 1
 
 #define DTYPE_VNODE 1
+#define DTYPE_PTS 2
