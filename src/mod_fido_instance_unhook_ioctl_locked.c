@@ -30,7 +30,7 @@ mod_fido_instance_unhook_ioctl_locked(
     mod_fido_instance* inst)
 {
     MODEL_CONTRACT_CHECK_PRECONDITIONS(
-        mod_fido_instance_hook_ioctl_locked, inst);
+        mod_fido_instance_unhook_ioctl_locked, inst);
 
     /* restore the old IOCTL syscall handler. */
     sysent[SYS_ioctl].sy_call = inst->old_sys_ioctl;
@@ -39,5 +39,5 @@ mod_fido_instance_unhook_ioctl_locked(
     inst->old_sys_ioctl = NULL;
 
     MODEL_CONTRACT_CHECK_POSTCONDITIONS(
-        mod_fido_instance_hook_ioctl_locked, inst);
+        mod_fido_instance_unhook_ioctl_locked, inst);
 }
