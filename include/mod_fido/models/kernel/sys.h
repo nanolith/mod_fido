@@ -60,6 +60,11 @@ struct fileops
 {
 };
 
+struct cdev
+{
+    struct tty* si_drv1;
+};
+
 struct sysent {
     sy_call_t* sy_call;
 };
