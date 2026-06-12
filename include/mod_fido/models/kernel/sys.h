@@ -33,6 +33,8 @@ struct sysent {
 
 extern struct sysent sysent[];
 
+#define MAX_SYSENT_ENTRIES 3
+
 #define M_WAITOK 1
 #define M_ZERO   2
 #define MTX_DEF 1
