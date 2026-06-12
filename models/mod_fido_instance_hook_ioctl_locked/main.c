@@ -1,0 +1,46 @@
+/**
+ * \file models/mod_fido_instance_hook_ioctl_locked/main.c
+ *
+ * \brief Model checks for \ref mod_fido_instance_hook_ioctl_locked.
+ *
+ * \copyright 2026 Justin Handville.  Please see license.txt in this
+ * distribution for the license terms under which this software is distributed.
+ */
+
+#include "mod_fido.h"
+
+int main(int argc, char* argv[])
+{
+    int retval;
+    auth_cache_entry lhs, rhs;
+    mod_fido_instance* inst;
+
+    /* create an instance. */
+    retval = mod_fido_instance_create_random(&inst);
+    if (0 != retval)
+    {
+        /* trim this path. */
+        MODEL_ASSUME(0);
+    }
+    /* assume the ioctl has NOT been hooked. */
+    MODEL_ASSUME(NULL == inst->old_sys_ioctl);
+
+    /* lock the mutex. */
+    mtx_lock(&inst->fido_mtx);
+
+    /* hook the ioctl. */
+    mod_fido_instance_hook_ioctl_locked(inst);
+
+    /* unlock the mutex. */
+    mtx_unlock(&inst->fido_mtx);
+
+    /* release the instance. */
+    retval = mod_fido_instance_release(inst);
+    if (0 != retval)
+    {
+        goto done;
+    }
+
+done:
+    return retval;
+}
