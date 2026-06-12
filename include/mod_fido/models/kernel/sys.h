@@ -71,6 +71,8 @@ struct vnode
     struct cdev* v_rdev;
 };
 
+#define VCHR 1
+
 struct sysent {
     sy_call_t* sy_call;
 };
