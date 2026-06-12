@@ -35,6 +35,8 @@ struct session
     struct tty* s_ttyp;
 };
 
+#define SESS_LOCK(sess)
+
 struct proc
 {
     struct session* p_session;
