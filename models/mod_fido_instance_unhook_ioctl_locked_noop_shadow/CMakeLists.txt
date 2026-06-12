@@ -9,6 +9,7 @@ SET(MC_SOURCES
     ${CMAKE_SOURCE_DIR}/models/shadow/kernel/mtx_unlock.c
     ${CMAKE_SOURCE_DIR}/models/shadow/kernel/property_mtx_valid.c
     ${CMAKE_SOURCE_DIR}/models/shadow/kernel/sysent.c
+    ${CMAKE_SOURCE_DIR}/models/shadow/mod_fido/mod_fido_instance_create_random.c
     ${CMAKE_SOURCE_DIR}/models/shadow/mod_fido/mod_fido_instance_unhook_ioctl_locked_noop.c
     ${CMAKE_SOURCE_DIR}/models/shadow/mod_fido/property_mod_fido_auth_cache_entry_valid.c
     ${CMAKE_SOURCE_DIR}/models/shadow/mod_fido/property_mod_fido_instance_hooked.c
