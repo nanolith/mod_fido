@@ -42,3 +42,5 @@ extern struct sysent sysent[];
 #define M_WAITOK 1
 #define M_ZERO   2
 #define MTX_DEF 1
+
+#define MOD_LOAD 0
