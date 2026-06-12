@@ -30,3 +30,12 @@ bool property_mtx_valid(const struct mtx* mutex);
  * \returns true if this mutex is locked.
  */
 bool property_mtx_locked(const struct mtx* mutex);
+
+/**
+ * \brief Returns true if the given kernel thread is valid.
+ *
+ * \param td                The thread to check.
+ *
+ * \returns true if this thread is valid.
+ */
+bool property_kernel_thread_valid(const struct thread* td);
