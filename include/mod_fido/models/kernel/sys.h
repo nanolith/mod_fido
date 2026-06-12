@@ -35,6 +35,11 @@ struct session
     struct tty* s_ttyp;
 };
 
+struct proc
+{
+    struct session* p_session;
+};
+
 struct fileops
 {
 };
