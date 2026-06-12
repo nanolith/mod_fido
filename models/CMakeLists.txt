@@ -13,3 +13,4 @@ SET(CBMC_BUILD_OPTIONS "-D_ANSI_LIBRARY -DCBMC=1 -I ${CMAKE_SOURCE_DIR}/models -
 ADD_SUBDIRECTORY(auth_cache_entry_cmp)
 ADD_SUBDIRECTORY(mod_fido_instance_create_release)
 ADD_SUBDIRECTORY(mod_fido_instance_release)
+ADD_SUBDIRECTORY(mod_fido_instance_unhook_ioctl_locked)
