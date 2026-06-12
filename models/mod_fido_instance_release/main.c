@@ -9,21 +9,6 @@
 
 #include "mod_fido.h"
 
-static int mod_fido_instance_create_random(mod_fido_instance** inst)
-{
-    *inst =
-        (mod_fido_instance*)malloc(sizeof(**inst), M_FIDO, M_WAITOK | M_ZERO);
-    if (NULL == *inst)
-    {
-        return 1;
-    }
-    mtx_init(&(*inst)->fido_mtx, "mod_fido mutex", NULL, MTX_DEF);
-    RB_INIT(&(*inst)->auth_cache);
-    (*inst)->hooked_count = 0;
-
-    return 0;
-}
-
 int main(int argc, char* argv[])
 {
     int retval;
