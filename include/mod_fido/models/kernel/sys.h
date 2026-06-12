@@ -22,3 +22,7 @@ struct mtx
     int valid;
     int locked;
 };
+
+struct fileops
+{
+};
