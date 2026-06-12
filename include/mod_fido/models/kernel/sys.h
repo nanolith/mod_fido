@@ -87,3 +87,8 @@ extern struct sysent sysent[];
 
 #define MOD_LOAD 0
 #define MOD_UNLOAD 1
+
+typedef struct cap_rights cap_rights_t;
+struct cap_rights
+{
+};
