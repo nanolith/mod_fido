@@ -36,6 +36,7 @@ struct session
 };
 
 #define SESS_LOCK(sess)
+#define SESS_UNLOCK(sess)
 
 struct proc
 {
