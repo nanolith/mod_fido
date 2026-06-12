@@ -65,6 +65,12 @@ struct cdev
     struct tty* si_drv1;
 };
 
+struct vnode
+{
+    int v_type;
+    struct cdev* v_rdev;
+};
+
 struct sysent {
     sy_call_t* sy_call;
 };
