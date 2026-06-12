@@ -44,6 +44,7 @@ struct proc
 };
 
 #define PROC_LOCK(proc)
+#define PROC_UNLOCK(proc)
 
 struct fileops
 {
