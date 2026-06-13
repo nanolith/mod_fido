@@ -85,6 +85,7 @@ struct file
 
 int fget(
     struct thread* td, int fd, const cap_rights_t* rightsp, struct file** fpp);
+void fdrop(struct file* fp, struct thread* td);
 
 struct sysent {
     sy_call_t* sy_call;
