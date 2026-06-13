@@ -456,6 +456,22 @@ MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
 MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_ioctl_tty_get_locked)
 
 /**
+ * \brief Try to get the tty pointer from a given set of ioctl args.
+ *
+ * \note As a side-effect, this method will hook a pseudo-terminal for further
+ * processing.
+ *
+ * \param inst          The mod_fido instance for this handler.
+ * \param td            The thread on which this system call was made.
+ * \param args          The arguments for this system call.
+ *
+ * \returns the tty for this ioctl if found, or NULL if not found.
+ */
+struct tty*
+mod_fido_instance_ioctl_tty_get(
+    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
+
+/**
  * \brief Hook the file options table for a given file handle.
  *
  * \param inst          The mod_fido instance for this operation.
