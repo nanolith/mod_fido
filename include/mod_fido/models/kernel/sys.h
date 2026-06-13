@@ -46,6 +46,11 @@ struct proc
 #define PROC_LOCK(proc)
 #define PROC_UNLOCK(proc)
 
+struct ucred
+{
+    uid_t cr_ruid;
+};
+
 struct thread
 {
     struct proc* td_proc;
