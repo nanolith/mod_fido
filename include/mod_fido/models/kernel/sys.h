@@ -76,7 +76,8 @@ struct vnode
 struct file
 {
     int f_type;
-    struct vnode* f_data;
+    void* f_data;
+    struct fileops* f_ops;
 };
 
 struct sysent {
