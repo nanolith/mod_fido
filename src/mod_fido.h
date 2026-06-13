@@ -471,6 +471,20 @@ struct tty*
 mod_fido_instance_ioctl_tty_get(
     mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
 
+/* function contract preconditions. */
+MODEL_CONTRACT_PRECONDITIONS_BEGIN(
+    mod_fido_instance_ioctl_tty_get, mod_fido_instance* inst, struct thread* td,
+    struct ioctl_args* args)
+        /* inst is valid. */
+        MODEL_ASSERT(property_mod_fido_instance_valid(inst));
+        /* inst is NOT locked. */
+        MODEL_ASSERT(!property_mod_fido_instance_locked(inst));
+        /* td is valid. */
+        MODEL_ASSERT(property_kernel_thread_valid(td));
+        /* args is valid. */
+        MODEL_ASSERT(property_ioctl_args_valid(args));
+MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_ioctl_tty_get)
+
 /**
  * \brief Hook the file options table for a given file handle.
  *
