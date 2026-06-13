@@ -57,3 +57,12 @@ bool property_ioctl_args_valid(const struct ioctl_args* args);
  * \returns true if this handle is valid.
  */
 bool property_file_handle_valid(const struct file* fp);
+
+/**
+ * \brief Returns true if the given tty is valid.
+ *
+ * \param tty               The tty to check.
+ *
+ * \returns true if this tty is valid.
+ */
+bool property_tty_valid(const struct tty* tp);
