@@ -38,3 +38,6 @@ type* name##_remove(type*, type*);
     name##_remove(root, entry)
 
 #define RB_INIT(root) (root)->rbh_root = NULL
+
+#define RB_FIND(name, root, key) \
+    name##_find(root, key)
