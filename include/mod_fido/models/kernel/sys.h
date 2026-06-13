@@ -60,6 +60,7 @@ typedef int (*fo_close_t)(struct file*, struct thread*);
 
 struct fileops
 {
+    fo_close_t fo_close;
 };
 
 struct cdev
