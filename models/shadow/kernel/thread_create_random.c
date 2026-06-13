@@ -11,6 +11,8 @@
 
 int nondet_int();
 
+static struct ucred dummy_ucred;
+
 int thread_create_random(struct thread** td)
 {
     *td = (struct thread*)malloc(sizeof(**td), M_FIDO, M_WAITOK | M_ZERO);
@@ -18,6 +20,9 @@ int thread_create_random(struct thread** td)
     {
         return 1;
     }
+
+    __CPROVER_havoc_object(&dummy_ucred);
+    (*td)->td_ucred = &dummy_ucred;
 
     /* should we create a proc? */
     if (0 == nondet_int())
