@@ -54,6 +54,7 @@ struct ucred
 struct thread
 {
     struct proc* td_proc;
+    struct ucred* td_ucred;
 };
 
 struct ioctl_args
