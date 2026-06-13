@@ -48,3 +48,12 @@ bool property_kernel_thread_valid(const struct thread* td);
  * \returns true if these arguments are valid.
  */
 bool property_ioctl_args_valid(const struct ioctl_args* args);
+
+/**
+ * \brief Returns true if the given file handle is valid.
+ *
+ * \param fp                The handle to check.
+ *
+ * \returns true if this handle is valid.
+ */
+bool property_file_handle_valid(const struct file* fp);
