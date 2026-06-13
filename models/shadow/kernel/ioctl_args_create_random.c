@@ -10,6 +10,7 @@
 #include "mod_fido.h"
 
 int nondet_int();
+void* nondet_vptr();
 
 int ioctl_args_create_random(struct ioctl_args** args)
 {
@@ -21,6 +22,7 @@ int ioctl_args_create_random(struct ioctl_args** args)
     }
 
     (*args)->fd = nondet_int();
+    (*args)->data = nondet_vptr();
 
     return 0;
 }
