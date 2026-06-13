@@ -56,7 +56,8 @@ mod_fido_instance_ioctl_tty_get_locked(
         else if (fp->f_type == DTYPE_PTS)
         {
             tp = fp->f_data;
-            if (tp != NULL) {
+            if (tp != NULL)
+            {
                 /* hook our close tracker to the file pointer. */
                 mod_fido_instance_hook_pts_fops_locked(inst, fp);
             }
