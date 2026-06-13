@@ -46,14 +46,7 @@ int thread_create_random(struct thread** td)
             /* should we create a controlling terminal? */
             if (0 == nondet_int())
             {
-                (*td)->td_proc->p_session->s_ttyp =
-                    (struct tty*)malloc(
-                        sizeof(struct tty), M_FIDO, M_WAITOK | M_ZERO);
-                if (NULL == (*td)->td_proc->p_session->s_ttyp)
-                {
-                    /* trim this branch. */
-                    MODEL_ASSUME(0);
-                }
+                (*td)->td_proc->p_session->s_ttyp = tty_create_random();
             }
             else
             {
@@ -79,11 +72,6 @@ void thread_release(struct thread* td)
     {
         if (NULL != td->td_proc->p_session)
         {
-            if (NULL != td->td_proc->p_session->s_ttyp)
-            {
-                free(td->td_proc->p_session->s_ttyp, M_FIDO);
-            }
-
             free(td->td_proc->p_session, M_FIDO);
         }
 
