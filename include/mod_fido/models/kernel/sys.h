@@ -54,6 +54,7 @@ struct thread
 struct ioctl_args
 {
     int fd;
+    const void* data;
 };
 
 typedef int (*fo_close_t)(struct file*, struct thread*);
