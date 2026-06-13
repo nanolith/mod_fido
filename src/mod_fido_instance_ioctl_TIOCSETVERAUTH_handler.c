@@ -29,7 +29,7 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
         mod_fido_instance_ioctl_TIOCSETVERAUTH_handler, inst, td, args);
 
     /* try to get the tty pointer. */
-    tp = mod_fido_instance_ioctl_tty_get_locked(inst, td, args);
+    tp = mod_fido_instance_ioctl_tty_get(inst, td, args);
     if (NULL == tp)
     {
         retval = ENOTTY;
