@@ -53,7 +53,7 @@ mod_fido_instance_ioctl_tty_get_locked(
             }
         }
         /* Is this a pseudo-terminal? */
-        else if (fp->f_type == DTYPE_PTS)
+        else if (DTYPE_PTS == fp->f_type)
         {
             tp = fp->f_data;
             if (tp != NULL)
