@@ -128,3 +128,4 @@ cap_rights_t* cap_rights_init(cap_rights_t *rights, int capability);
 #define DTYPE_PTS 2
 
 struct tty* tty_create_random();
+struct cdev* cdev_create_random();
