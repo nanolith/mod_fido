@@ -80,6 +80,9 @@ struct file
     struct fileops* f_ops;
 };
 
+int fget(
+    struct thread* td, int fd, const cap_rights_t* rightsp, struct file** fpp);
+
 struct sysent {
     sy_call_t* sy_call;
 };
