@@ -424,50 +424,6 @@ MODEL_CONTRACT_POSTCONDITIONS_END(
  * \returns the tty for this ioctl if found, or NULL if not found.
  */
 struct tty*
-mod_fido_instance_ioctl_tty_get_locked(
-    mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
-
-/* function contract preconditions. */
-MODEL_CONTRACT_PRECONDITIONS_BEGIN(
-    mod_fido_instance_ioctl_tty_get_locked, mod_fido_instance* inst,
-    struct thread* td, struct ioctl_args* args)
-        /* inst is valid. */
-        MODEL_ASSERT(property_mod_fido_instance_valid(inst));
-        /* inst is locked. */
-        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
-        /* td is valid. */
-        MODEL_ASSERT(property_kernel_thread_valid(td));
-        /* args is valid. */
-        MODEL_ASSERT(property_ioctl_args_valid(args));
-MODEL_CONTRACT_PRECONDITIONS_END(mod_fido_instance_ioctl_tty_get_locked)
-
-/* function contract postconditions. */
-MODEL_CONTRACT_POSTCONDITIONS_BEGIN(
-    mod_fido_instance_ioctl_tty_get_locked, struct tty* retval,
-    mod_fido_instance* inst, struct thread* td, struct ioctl_args* args)
-        /* inst is locked. */
-        MODEL_ASSERT(property_mod_fido_instance_locked(inst));
-        /* if the returned tty is not NULL... */
-        if (NULL != retval)
-        {
-            /* it is a valid tty instance. */
-            MODEL_ASSERT(property_tty_valid(retval));
-        }
-MODEL_CONTRACT_POSTCONDITIONS_END(mod_fido_instance_ioctl_tty_get_locked)
-
-/**
- * \brief Try to get the tty pointer from a given set of ioctl args.
- *
- * \note As a side-effect, this method will hook a pseudo-terminal for further
- * processing.
- *
- * \param inst          The mod_fido instance for this handler.
- * \param td            The thread on which this system call was made.
- * \param args          The arguments for this system call.
- *
- * \returns the tty for this ioctl if found, or NULL if not found.
- */
-struct tty*
 mod_fido_instance_ioctl_tty_get(
     mod_fido_instance* inst, struct thread *td, struct ioctl_args* args);
 
