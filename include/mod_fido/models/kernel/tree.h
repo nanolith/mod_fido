@@ -41,3 +41,6 @@ type* name##_remove(type*, type*);
 
 #define RB_FIND(name, root, key) \
     name##_find(root, key)
+
+#define RB_INSERT(name, root, entry) \
+    name##_insert(root, entry)
