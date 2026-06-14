@@ -10,6 +10,7 @@
 #pragma once
 
 #include <errno.h>
+#include <limits.h>
 #include <pthread.h>
 #include <mod_fido/properties/kernel.h>
 
