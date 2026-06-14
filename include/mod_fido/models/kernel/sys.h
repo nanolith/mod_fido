@@ -18,7 +18,7 @@
 
 typedef int module_t;
 
-typedef void sy_call_t;
+typedef int (sy_call_t)(struct thread* td, void* args);
 
 struct mtx
 {
