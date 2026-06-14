@@ -156,6 +156,7 @@ int copyin(const void *uaddr, void *kaddr, size_t len);
 
 #define	_IOC(inout,group,num,len)	((unsigned long) \
 	((inout) | (((len) & IOCPARM_MASK) << 16) | ((group) << 8) | (num)))
+#define	_IO(g,n)	_IOC(IOC_VOID,	(g), (n), 0)
 
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
