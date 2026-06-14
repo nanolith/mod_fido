@@ -154,6 +154,9 @@ int copyin(const void *uaddr, void *kaddr, size_t len);
 #define	IOCPARM_SHIFT 13
 #define	IOCPARM_MASK ((1 << IOCPARM_SHIFT) - 1)
 
+#define	_IOC(inout,group,num,len)	((unsigned long) \
+	((inout) | (((len) & IOCPARM_MASK) << 16) | ((group) << 8) | (num)))
+
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
 struct vnode* vnode_create_random();
