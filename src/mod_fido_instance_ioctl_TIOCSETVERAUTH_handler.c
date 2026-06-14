@@ -54,8 +54,15 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
         goto done;
     }
 
-    /* set an bounds for timeout duration. */
+    /* set bounds for timeout duration. */
     if (timeout_duration < 0 || timeout_duration > 1500)
+    {
+        retval = EINVAL;
+        goto done;
+    }
+
+    /* set bounds for current_secs. */
+    if (current_secs < 0 || INT_MAX - current_secs < timeout_duration)
     {
         retval = EINVAL;
         goto done;
