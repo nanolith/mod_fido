@@ -30,6 +30,8 @@ struct tty
 {
 };
 
+dev_t tty_udev(struct tty *tp);
+
 struct session
 {
     struct tty* s_ttyp;
