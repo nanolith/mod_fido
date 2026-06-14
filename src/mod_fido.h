@@ -15,6 +15,7 @@
 #include <sys/kernel.h>
 #include <sys/capsicum.h>
 #include <sys/conf.h>
+#include <sys/limits.h>
 #include <sys/malloc.h>
 #include <sys/module.h>
 #include <sys/file.h>
