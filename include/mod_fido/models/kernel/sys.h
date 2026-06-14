@@ -141,6 +141,8 @@ int	priv_check(struct thread *td, int priv);
 
 sbintime_t getsbinuptime(void);
 
+int copyin(const void *uaddr, void *kaddr, size_t len);
+
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
 struct vnode* vnode_create_random();
