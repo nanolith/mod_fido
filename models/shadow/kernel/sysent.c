@@ -28,5 +28,8 @@ static int nondet_retval();
 static int
 sysent_ioctl(struct thread *td, void *args)
 {
-    return nondet_retval();
+    int retval = nondet_retval();
+    MODEL_ASSUME(property_error_code_is_expected_for_ioctl_syscall(retval));
+
+    return retval;
 }
