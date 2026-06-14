@@ -48,3 +48,4 @@ type* name##_insert(type*, type*);
     name##_insert(root, entry)
 
 void auth_cache_table_init(void);
+void auth_cache_table_release(void);
