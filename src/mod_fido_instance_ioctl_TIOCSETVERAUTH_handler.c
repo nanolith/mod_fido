@@ -54,6 +54,13 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
         goto done;
     }
 
+    /* set an bounds for timeout duration. */
+    if (timeout_duration < 0 || timeout_duration > 1500)
+    {
+        retval = EINVAL;
+        goto done;
+    }
+
     /* pre-calculate data. */
     dev_t tty_key = tty_udev(tp);
     uid_t caller_id = td->td_ucred->cr_ruid;
