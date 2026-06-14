@@ -47,6 +47,7 @@ mod_fido_instance_ioctl_TIOCCLRVERAUTH_handler(
         retval = priv_check(td, PRIV_DRIVER);
         if (0 != retval)
         {
+            retval = EPERM;
             goto done;
         }
     }
