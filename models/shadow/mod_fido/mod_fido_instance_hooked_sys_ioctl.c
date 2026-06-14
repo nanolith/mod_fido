@@ -18,6 +18,7 @@ mod_fido_instance_hooked_sys_ioctl(struct thread *td, void *args)
         mod_fido_instance_hooked_sys_ioctl, td, args);
 
     int retval = nondet_retval();
+    MODEL_ASSUME(property_error_code_is_expected_for_ioctl_syscall(retval));
 
     MODEL_CONTRACT_CHECK_POSTCONDITIONS(
         mod_fido_instance_hooked_sys_ioctl, retval, td, args);
