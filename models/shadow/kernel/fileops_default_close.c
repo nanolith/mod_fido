@@ -9,9 +9,9 @@
 
 #include "mod_fido.h"
 
-int nondet_int();
+int fileops_default_close_return_value = nondet_int();
 
 int fileops_default_close(struct file* fp, struct thread* td)
 {
-    return nondet_int();
+    return fileops_default_close_return_value;
 }
