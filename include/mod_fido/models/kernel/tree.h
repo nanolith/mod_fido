@@ -26,7 +26,8 @@ struct name { \
 type* name##_start(type*); \
 type* name##_next(type*); \
 type* name##_remove(type*, type*); \
-type* name##_find(type*, type*);
+type* name##_find(type*, type*); \
+type* name##_insert(type*, type*);
 
 #define RB_START(name,root) name##_start(root)
 
