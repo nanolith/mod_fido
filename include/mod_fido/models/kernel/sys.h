@@ -63,6 +63,7 @@ struct thread
 struct ioctl_args
 {
     int fd;
+    int com;
     const void* data;
 };
 
