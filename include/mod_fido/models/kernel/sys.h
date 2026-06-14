@@ -147,6 +147,7 @@ sbintime_t getsbinuptime(void);
 
 int copyin(const void *uaddr, void *kaddr, size_t len);
 
+#define	IOC_VOID 0x20000000UL
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
 struct vnode* vnode_create_random();
