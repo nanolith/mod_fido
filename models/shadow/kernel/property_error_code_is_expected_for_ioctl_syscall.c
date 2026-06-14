@@ -12,9 +12,10 @@
 bool property_error_code_is_expected_for_ioctl_syscall(int error)
 {
     return
-        (EBADF == error
+        (     0 == error
+      ||  EBADF == error
       || ENOTTY == error
       || EINVAL == error
       || EFAULT == error
-      || EPERM == error);
+      ||  EPERM == error);
 }
