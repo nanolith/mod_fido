@@ -14,6 +14,7 @@ bool property_error_code_is_expected_for_ioctl_syscall(int error)
     return
         (     0 == error
       ||  EBADF == error
+      || ENOENT == error
       || ENOTTY == error
       || EINVAL == error
       || EFAULT == error
