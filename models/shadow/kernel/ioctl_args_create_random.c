@@ -22,6 +22,7 @@ int ioctl_args_create_random(struct ioctl_args** args)
     }
 
     (*args)->fd = nondet_int();
+    (*args)->com = nondet_int();
     (*args)->data = nondet_vptr();
 
     return 0;
