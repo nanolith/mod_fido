@@ -139,6 +139,8 @@ int	priv_check(struct thread *td, int priv);
 
 #define PRIV_DRIVER 100
 
+sbintime_t getsbinuptime(void);
+
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
 struct vnode* vnode_create_random();
