@@ -47,6 +47,13 @@ mod_fido_instance_ioctl_TIOCCHKVERAUTH_handler(
     /* get the current uptime. */
     int current_secs = (int)(getsbinuptime() >> 32);
 
+    /* do a bounds check on current_secs. */
+    if (current_secs < 0)
+    {
+        retval = EINVAL;
+        goto done;
+    }
+
     /* pre-calculate data. */
     dev_t tty_key = tty_udev(tp);
     uid_t caller_id = td->td_ucred->cr_ruid;
