@@ -46,3 +46,5 @@ type* name##_insert(type*, type*);
 
 #define RB_INSERT(name, root, entry) \
     name##_insert(root, entry)
+
+void auth_cache_table_init(void);
