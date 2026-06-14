@@ -76,3 +76,13 @@ bool property_tty_valid(const struct tty* tp);
  * \returns true if this error code is expected.
  */
 bool property_error_code_is_expected_for_ioctl_syscall(int error);
+
+/**
+ * \brief Returns true if the given error code is expected for a file close
+ * operation.
+ *
+ * \param error             The error to check.
+ *
+ * \returns true if this error code is expected.
+ */
+bool property_error_code_is_expected_for_file_close(int error);
