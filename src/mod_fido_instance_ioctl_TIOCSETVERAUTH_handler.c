@@ -40,6 +40,7 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
     retval = priv_check(td, PRIV_DRIVER);
     if (0 != retval)
     {
+        retval = EPERM;
         goto done;
     }
 
@@ -51,6 +52,7 @@ mod_fido_instance_ioctl_TIOCSETVERAUTH_handler(
     retval = copyin(args->data, &timeout_duration, sizeof(timeout_duration));
     if (0 != retval)
     {
+        retval = EINVAL;
         goto done;
     }
 
