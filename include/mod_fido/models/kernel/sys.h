@@ -160,6 +160,8 @@ int copyin(const void *uaddr, void *kaddr, size_t len);
 #define	_IOR(g,n,t)	_IOC(IOC_OUT,	(g), (n), sizeof(t))
 #define	_IOW(g,n,t)	_IOC(IOC_IN,	(g), (n), sizeof(t))
 
+#define	TIOCSCTTY _IO('t', 97)
+
 struct cdev* cdev_create_random();
 struct tty* tty_create_random();
 struct vnode* vnode_create_random();
